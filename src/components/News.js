@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const News = (props) => {
+  const apiKey='05ca00be50bc444496843c96798e1d4b';
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -16,7 +17,7 @@ const News = (props) => {
 
   const updateNews = async () => {
     props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${apiKey}&page=${page}&pageSize=${props.pageSize}`;
 
     setLoading(true);
     fetch(url)
@@ -43,7 +44,7 @@ const News = (props) => {
   const fetchMoreData = async () => {
     const url = `https://newsapi.org/v2/top-headlines?country=${
       props.country
-    }&category=${props.category}&apiKey=${props.apiKey}&page=${
+    }&category=${props.category}&apiKey=${apiKey}&page=${
       page + 1
     }&pageSize=${props.pageSize}`;
     setPage(page + 1);
